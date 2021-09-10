@@ -6,6 +6,7 @@ function LoginForm() {
     const [username, setusername] = useState(null);
     const [password, setpassword] = useState(null);
     const [noticemsg, setnoticemsg] = useState('none');
+    const [noticeclass, setnoticeclass] = useState('');
 
     function getUserInfo(e) {
         e.preventDefault();
@@ -32,8 +33,14 @@ function LoginForm() {
         })
         .then( response => response.json() )
         .then( userData => {
+            console.log(userData);
             setuserInfo(userData);
             setnoticemsg('block');
+            if (userData.status === 'success' ) {
+                setnoticeclass('green');
+            } else {
+                setnoticeclass('red');
+            }
         } )
         .catch( ( error ) => {
             console.log( error );
@@ -48,7 +55,7 @@ function LoginForm() {
                 <input type="password" placeholder="password" onChange={(event) => setpassword(event.target.value)} />
                 <input type="submit" value="Submit" />
             </form>
-            <div className="success-msg" style={{ display: `${noticemsg}` }}>
+            <div className={`${noticeclass}`} style={{ display: `${noticemsg}` }}>
                 <div dangerouslySetInnerHTML={{ __html: userInfo?.message }} />
             </div>
         </div>
