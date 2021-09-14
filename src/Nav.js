@@ -4,8 +4,8 @@ function Nav() {
             <nav>
                 <ul className="main-menu">
                     <li><a href="/">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact US</a></li>
+                    <li><a href="/counter">Counter</a></li>
+                    <li><a href="/login">Login</a></li>
                 </ul>
             </nav>
         </div>

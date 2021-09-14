@@ -40,7 +40,12 @@ function MovieSearch() {
             console.log(err);
             console.log( 'No Data Error' );
         })
+    }
 
+    function formSubmit(e) {
+        console.log( 'Form Submit' );
+        e.preventDefault();
+        getMovieInfo();
     }
 
     return(
@@ -48,13 +53,13 @@ function MovieSearch() {
             <div className="container">
                 <div className="form-details">   
                     <h1>Movie Search</h1>
-                    <div className="form-groups">
+                    <form className="form-groups" onSubmit={formSubmit}>
                         <input type="text" placeholder="Search Movie Here..." onChange={(event)=>readTitle(event.target.value)} />
-                        <button onClick={getMovieInfo}>Search</button>
-                    </div>
+                        <input type="submit" value="search" className="search-btn" />
+                    </form>
                 </div>
-                {/* <div style={{ display: `${showmovieblock}` }}> */}
-                <div style={{ display: 'none' }}>
+                {/* <div style={{ display: 'none' }}> */}
+                <div style={{ display: `${showmovieblock}` }}>
                     <div className="movie-data">
                         <div className="movie-poster">
                             <img src={movieInfo?.Poster} alt="" />
